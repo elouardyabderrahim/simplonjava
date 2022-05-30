@@ -52,7 +52,9 @@ Modélisation et implémentation de la base de données d’une application Web 
     username  VARCHAR(25),
 	passwrd VARCHAR(100)	 
 	)
-	-----------table of Client------------------
+	
+	
+	/*-----------table of Client------------------*/
 
 	create table Client(	id_client serial primary key   ,
     nom VARCHAR(25),
@@ -65,7 +67,7 @@ Modélisation et implémentation de la base de données d’une application Web 
     username  VARCHAR(25),
 	passwrd VARCHAR(100)	 
 )
------------------table of products---------------------
+/*-----------------table of products---------------------*/
 	create table Produit(id_produit serial primary key   ,
     nom_produit VARCHAR(25),
     type_produit VARCHAR(100),
@@ -74,21 +76,21 @@ Modélisation et implémentation de la base de données d’une application Web 
 	prix_prd int,					 
     id_administrateur serial  REFERENCES Administrateur(id_administrateur) 
 						)
-	-----------------table of vote---------------------
+	/*-----------------table of vote---------------------*/
 	create table vote(
 		id_produit serial references Produit(id_produit),
 		id_client serial references Client(id_client),
 		rate int
 	)
-	-------select table client ------------------
+	/*-------select table client ------------------*/
 	 SELECT * FROM Client
-	 --------select table administrator----------
+	 /*--------select table administrator----------*/
 	  SELECT * FROM Administrateur
-	  ------------select table vote----------
+	  /*------------select table vote----------*/
 	  SELECT * FROM vote
-	  ------------select table vote----------
+	  /*------------select table vote----------*/
 	  SELECT * FROM produit
-	  -------------------------isertion du table CLient -------------
+	  /*-------------------------isertion du table CLient -------------*/
 	 insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)values
 	 ('amouguay', 'latifa', 'latifaamouguay@gmail.com','01-07-2000','MAROC','agadir',80650,'LATIFADEV','latifa123')
      insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)
@@ -102,14 +104,14 @@ Modélisation et implémentation de la base de données d’une application Web 
 	 insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)
      values('yahya', 'safia', 'kawtaralami@gmail.com','01-01-2000','MAROC','agadir',80450,'ilham','latifa123')
 	 
-	 ---------insertion les donées de l'administrateur------------------
+	/* ---------insertion les donées de l'administrateur------------------*/
 	insert into Administrateur( email,username,passwrd)
      values( 'admin1@gmail.com','admin','admin')
 	  
-	 ---------insertion les donées du produit ------------------
+	/* ---------insertion les donées du produit ------------------*/
 	
-	 --------- insertion des données des vote-------
-	 ---------insertion les donées de l'administrateur------------------
+	 /*--------- insertion des données des vote-------*/
+	/* ---------insertion les donées de l'administrateur------------------*/
 	insert into vote( rate)
      values(4)
 	 
