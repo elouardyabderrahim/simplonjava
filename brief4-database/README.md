@@ -46,7 +46,7 @@ Modélisation et implémentation de la base de données d’une application Web 
   
   /*Create database:*/
   CREATE DATABASE "MOUNTAJRATE
-  ---------------table of administrator----------
+ /* ---------------table of administrator----------*/
 	create table Administrateur(id_administrateur serial primary key ,
     email VARCHAR(25),
     username  VARCHAR(25),
