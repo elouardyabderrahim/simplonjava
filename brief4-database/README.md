@@ -46,75 +46,126 @@ Modélisation et implémentation de la base de données d’une application Web 
   
   /*Create database:*/
   CREATE DATABASE "MOUNTAJRATE
- /* ---------------table of administrator----------*/
-	create table Administrateur(id_administrateur serial primary key ,
+ ---------------table of administrator---------------------------------------------------------------------------------------
+    create table Administrateur(
+	id_administrateur int primary key ,
     email VARCHAR(25),
     username  VARCHAR(25),
-	passwrd VARCHAR(100)	 
-	)
+    passwrd VARCHAR(100)
+    )
 	
+------------------ Remplir table administrateur----------------------------------------------------------------------------
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (1,'ansdev@gmail.com','anasmak','makmak123')
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (2,'taha@gmail.com','tahakira','taha123')
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (3,'ameen@gmail.com','ammenox','ameen123')
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (4,'kareem@gmail.com','kareem','kareem123')
 	
-	/*-----------table of Client------------------*/
 
-	create table Client(	id_client serial primary key   ,
-    nom VARCHAR(25),
-    prenom VARCHAR(100),
-    email VARCHAR(25),
-    date_naissance DATE,
-    pays VARCHAR(10),
-    ville VARCHAR(10),
-    code_postal VARCHAR(5),
-    username  VARCHAR(25),
-	passwrd VARCHAR(100)	 
-)
-/*-----------------table of products---------------------*/
-	create table Produit(id_produit serial primary key   ,
+-----------------table of products---------------------
+    create table Produit(
+	id_produit int primary key,
     nom_produit VARCHAR(25),
     type_produit VARCHAR(100),
     date_production DATE,
     qte_prod  int,
-	prix_prd int,					 
-    id_administrateur serial  REFERENCES Administrateur(id_administrateur) 
-						)
-	/*-----------------table of vote---------------------*/
-	create table vote(
-		id_produit serial references Produit(id_produit),
-		id_client serial references Client(id_client), primery key(id_produit,id_client),
-		rate int
-	)
-	/*-------select table client ------------------*/
-	 SELECT * FROM Client
-	 /*--------select table administrator----------*/
-	  SELECT * FROM Administrateur
-	  /*------------select table vote----------*/
-	  SELECT * FROM vote
-	  /*------------select table vote----------*/
-	  SELECT * FROM produit
-	  /*-------------------------isertion du table CLient -------------*/
-	 insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)values
-	 ('amouguay', 'latifa', 'latifaamouguay@gmail.com','01-07-2000','MAROC','agadir',80650,'LATIFADEV','latifa123')
-     insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)
-     values('salma', 'alami', 'kawtaralami@gmail.com','01-01-2000','MAROC','agadir',80650,'salma','latifa123')
-	 insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)
-     values('rayan', 'hanae', 'kawtaralami@gmail.com','01-01-2000','MAROC','agadir',80650,'hanae','latifa123')
-	 insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)
-     values('fadli', 'KAWTAR', 'kawtaralami@gmail.com','01-01-2000','MAROC','agadir',80650,'fatima','latifa123')
-	 insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)
-     values('yahya', 'ilham', 'kawtaralami@gmail.com','01-01-2000','MAROC','agadir',80650,'ilham','latifa123')
-	 insert into Client(nom, prenom, email,date_naissance,pays,ville,code_postal,username,passwrd)
-     values('yahya', 'safia', 'kawtaralami@gmail.com','01-01-2000','MAROC','agadir',80450,'ilham','latifa123')
-	 
-	/* ---------insertion les donées de l'administrateur------------------*/
-	insert into Administrateur( email,username,passwrd)
-     values( 'admin1@gmail.com','admin','admin')
-	  
-	/* ---------insertion les donées du produit ------------------*/
+    prix_prd int,
+    id_administrateur int  REFERENCES Administrateur(id_administrateur) 
+)
+---------------------------- Remplir table produits -------------------------------------------------------------
+insert into Produit values  (1,'argane','cosmitique','2022-03-03',33,1200)
+insert into Produit values 	(2,'argane','a manger','2022-04-04',43,1700)
+insert into Produit values 	(3,'kawkaw amlou','a mange','2022-05-05',32,1500)
+insert into Produit values	(4,'Amlo looze','a manger','2022-06-06',45,1500)
+insert into Produit values 	(5,'huile de figue','cosmitique','2022-07-07',54,1400)
+
+--------------------------table of vote-------------------------------------------------------------------------
+    create table vote(
+        id_produit int references Produit(id_produit),
+        id_client int references Client(id_client),
+        rate int,
+		primary key (id_produit,id_client)
+    )
+	drop table vote
 	
-	 /*--------- insertion des données des vote-------*/
-	/* ---------insertion les donées de l'administrateur------------------*/
-	insert into vote( rate)
-     values(4)
-	 
+	insert into vote (id_produit,id_client,rate) values (1,1,8)
+
+
+	select * from client
+	
+	insert into client (id_client,nom,prenom,email,date_naissance,pays,ville,code_postal,username,passwrd)
+	values (1,'ameen','kariim','anasdev@gmail.com','1992-03-02','morocco','rabat','0','anasmak','anas5313M')
+	
+select * from Produit
+select * from administrateur
+select * from vote---------------table of administrator---------------------------------------------------------------------------------------
+    create table Administrateur(
+	id_administrateur int primary key ,
+    email VARCHAR(25),
+    username  VARCHAR(25),
+    passwrd VARCHAR(100)
+    )
+	
+------------------ Remplir table administrateur----------------------------------------------------------------------------
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (1,'ansdev@gmail.com','anasmak','makmak123')
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (2,'taha@gmail.com','tahakira','taha123')
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (3,'ameen@gmail.com','ammenox','ameen123')
+	insert into Administrateur(id_administrateur,email,username,passwrd) values (4,'kareem@gmail.com','kareem','kareem123')
+	
+
+-----------------table of products---------------------
+    create table Produit(
+	id_produit int primary key,
+    nom_produit VARCHAR(25),
+    type_produit VARCHAR(100),
+    date_production DATE,
+    qte_prod  int,
+    prix_prd int,
+    id_administrateur int  REFERENCES Administrateur(id_administrateur) 
+)
+---------------------------- Remplir table produits -------------------------------------------------------------
+insert into Produit values  (1,'argane','cosmitique','2022-03-03',33,1200)
+insert into Produit values 	(2,'argane','a manger','2022-04-04',43,1700)
+insert into Produit values 	(3,'kawkaw amlou','a mange','2022-05-05',32,1500)
+insert into Produit values	(4,'Amlo looze','a manger','2022-06-06',45,1500)
+insert into Produit values 	(5,'huile de figue','cosmitique','2022-07-07',54,1400)
+--------------------------------------------------------------------------------------
+create table client (
+	id_client int primary key,
+	nom varchar (50),
+	prenom varchar (50),
+	email varchar (50),
+	date_naissance date,
+	pays varchar (50),
+	ville varchar (50),
+	code_postal varchar (50),
+	username varchar (50),
+	passwrd varchar (55)
+
+)
+drop table client
+--------------------------table of vote-------------------------------------------------------------------------
+    create table vote(
+        id_produit int references Produit(id_produit),
+        id_client int references Client(id_client),
+        rate int,
+		primary key (id_produit,id_client)
+    )
+	drop table vote
+	
+	insert into vote (id_produit,id_client,rate) values (1,2,8)
+
+
+	select * from client
+	
+	insert into client (id_client,nom,prenom,email,date_naissance,pays,ville,code_postal,username,passwrd) values (2,'ameen','kariim','anasdev@gmail.com','1992-03-02','morocco','rabat','0','anasmak','anas5313M')
+	insert into vote(id_produit,id_client,rate) values (1,2,5)
+select * from Produit
+select * from administrateur
+select * from vote
+
+
+
+
 	 
 	 
 
